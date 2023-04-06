@@ -12,7 +12,7 @@ public class colorSensor {
 	    public static EV3ColorSensor colorSensor;
 	    
 	    float[] colorSample = new float[colorSensor.getRedMode().sampleSize()];
-        colorSensor.getRedMode().fetchSample(colorSample, 0);
+        //colorSensor.getRedMode().fetchSample(colorSample, 0);
 	
 }
-}
+

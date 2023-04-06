@@ -13,7 +13,7 @@ import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.robotics.SampleProvider;*/
 
 
-public class main{
+public class Main{
 
     public static void main(String[] args) {
       // Port colorPort = LocalEV3.get().getPort("S3");
