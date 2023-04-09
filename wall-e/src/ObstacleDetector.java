@@ -25,7 +25,9 @@ public class ObstacleDetector extends Thread {
         while (!Button.ESCAPE.isDown()) {
             sp.fetchSample(ultraSample, 0);
             float distance = ultraSample[0];
+            
             System.out.println("Distance: " + distance);
+            
             if (distance < 0.11) {
                 System.out.println("Obstacle detected!");
                 Sound.twoBeeps();
@@ -46,20 +48,15 @@ public class ObstacleDetector extends Thread {
                     Delay.msDelay(3000);
                     Motor.A.rotate(-TURN_ANGLE/2);
                 }
-
             else {
                 Motor.A.forward();
                 Motor.B.forward();
             }
-
-
         }
-
         sonicSensor.close();
         Motor.A.close();
         Motor.B.close();
     }
-
     /*
     public void start() {
         Thread t = new Thread(this);
