@@ -22,7 +22,6 @@ public class DataExchange {
     public EV3UltrasonicSensor sonicSensor;
 
 
-    //private int CMD = 1; 
 
     public DataExchange() {} //constructor
 
@@ -43,18 +42,4 @@ public class DataExchange {
     	return distance; //We will use this DE method for distance in OB
     }
     
-    /* getters and setter */ 
-
-
-    public void setObstacleDetected (boolean status) {	    /* public void setObstacleDetected (boolean status) {
-       obstacleDetected = status; 	        obstacleDetected = status; 
-   }	    }
-@@ -39,6 +61,6 @@ public void setCMD (int command) {
-   }	    }
-   public int getCMD() {	    public int getCMD() {
-       return CMD; 	        return CMD; 
-   }	    }*/
-
-
-}	
-    }
+}
