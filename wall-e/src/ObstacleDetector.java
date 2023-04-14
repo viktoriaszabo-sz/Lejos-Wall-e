@@ -24,14 +24,14 @@ public class ObstacleDetector extends Thread {
             System.out.println("Distance: " + distance);*/
 
                 //float distance = DataExchange.distance;
-                
+
 				if (DataExchange.getDistance()  < 0.11) //here we use the dataexchange distance value
 				{
                     System.out.println("Obstacle detected!");
                     Sound.twoBeeps();
                     Motor.A.stop();
                     Motor.B.stop();
-                    
+
                     //Motor.A.rotate(-TURN_ANGLE);
                     //Motor.B.rotate(TURN_ANGLE);
                     //Motor.A.rotate(-170);
@@ -56,11 +56,4 @@ public class ObstacleDetector extends Thread {
         Motor.A.close();
         Motor.B.close();
     }
-
-    /*
-    public void start() {
-        Thread t = new Thread(this);
-        t.start();
-    }
-      */
 }
