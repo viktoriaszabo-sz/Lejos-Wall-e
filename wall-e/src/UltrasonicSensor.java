@@ -7,11 +7,10 @@ import lejos.robotics.SampleProvider;
 public class UltrasonicSensor extends Thread {
 
 	public static float distance;
-	//public static float distance;
 	public EV3UltrasonicSensor sonicSensor;
 	DataExchange DE = new DataExchange(); 
 
-    public UltrasonicSensor() { //(Port sensorPort)
+    public UltrasonicSensor() {
        sonicSensor = new EV3UltrasonicSensor(SensorPort.S4);
        //this.DE = DE; 
     }
@@ -33,7 +32,6 @@ public class UltrasonicSensor extends Thread {
 
             System.out.println("Distance: " + distance);
         }
-
         sonicSensor.close();
         Motor.A.close();
         Motor.B.close();
