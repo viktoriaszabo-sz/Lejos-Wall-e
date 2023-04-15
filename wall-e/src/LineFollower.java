@@ -1,29 +1,30 @@
 import lejos.hardware.Button;
-//import lejos.hardware.ev3.LocalEV3;
 import lejos.hardware.motor.Motor;
-//import lejos.hardware.port.Port;
-import lejos.hardware.port.SensorPort;
-import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.Color;
 
 
 public class LineFollower extends Thread {
     public static final int SPEED = 300;
     public static final float BLACK_THRESHOLD = 0.1f;
-    public static EV3ColorSensor colorSensor;
-    DataExchange DE;
+   // public static EV3ColorSensor colorSensor;
+    DataExchange DE = new DataExchange(); 
 
-    public LineFollower(DataExchange DE) { //(Port colorPort)
-        colorSensor = new EV3ColorSensor(SensorPort.S3);
-
+    public LineFollower() { //(Port colorPort)
+    	//colorSensor = new EV3ColorSensor(SensorPort.S3);
+    	//this.DE = DE; 
     } 
 
-    public void run(){
+    public void run()
+    {
 
-        while(!Button.ESCAPE.isDown()) {
-            float[] colorSample = new float[colorSensor.getRedMode().sampleSize()];
-            colorSensor.getRedMode().fetchSample(colorSample, 0);
-            if(colorSample[0] == Color.BLACK) {
+        while(!Button.ESCAPE.isDown()) 
+        {
+            float[] colorSample = DataExchange.colorSample;
+			//float[] colorSample = new float[colorSensor.getRedMode().sampleSize()];
+            //colorSensor.getRedMode().fetchSample(colorSample, 0);
+            
+            
+            if(colorSample [0] == Color.BLACK) {
                 // On the line, move straight
                 Motor.A.setSpeed(SPEED);
                 Motor.B.setSpeed(SPEED);
@@ -46,7 +47,7 @@ public class LineFollower extends Thread {
             }
         }
 
-        colorSensor.close();
+       // colorSensor.close();
         Motor.A.close();
         Motor.B.close();
     }
