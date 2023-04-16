@@ -13,7 +13,8 @@ public class DataExchange
     
     //obstacledetector
     public static int TURN_ANGLE = 180; // angle to turn when avoiding obstacle
-
+    public static float distance = 0;
+    
     //ultrasonic sensor 
     public EV3UltrasonicSensor sonicSensor;
 
@@ -26,13 +27,27 @@ public class DataExchange
     	colorSample[0] = sample[0];
     }
 
-    public static float distance = 0;
-    public static void setDistance(float d)
+     /*public static void setDistance(float d)
     {
     	distance = d; //we put the distance into this DE method
     }
     public static float getDistance()
     {
     	return distance; //We will use this DE method for distance in OB
-    }
+    }*/
+    
+    
+    private int CMD = 1; //which command the robot should do -- 1=linefollowing 2=obstacle-avoidance
+    
+    public void setCMD(int command) {
+		CMD = command;
+	}
+	
+	public int getCMD() {
+		return CMD;
+	}
+    
+    
+    
+    
 }

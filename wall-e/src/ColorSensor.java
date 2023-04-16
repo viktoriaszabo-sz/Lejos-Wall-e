@@ -7,9 +7,9 @@ public class ColorSensor extends Thread{
     public static EV3ColorSensor colorSensor;
     DataExchange DE = new DataExchange(); 
 
-	public ColorSensor () {
+	public ColorSensor (DataExchange DE) {
         colorSensor = new EV3ColorSensor(SensorPort.S3);
-        //this.DE = DE; 
+        this.DE = DE; 
     } 
 
 	 public void run ()
