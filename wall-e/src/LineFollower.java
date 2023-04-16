@@ -8,11 +8,8 @@ import lejos.utility.Delay;
 public class LineFollower extends Thread {
     public static final int SPEED = 300;
     public static final float BLACK_THRESHOLD = 0.1f;
-    public static int TURN_ANGLE = 170;
+    public static int TURN_ANGLE = 180;
     DataExchange DE; 
-    
-    /*private RegulatedMotor Motor.A = new EV3LargeRegulatedMotor(MotorPort.B);
-	private RegulatedMotor Motor.B = new EV3LargeRegulatedMotor(MotorPort.A);*/
 
     public LineFollower(DataExchange DE) { 
     	this.DE = DE; 
@@ -33,6 +30,8 @@ public class LineFollower extends Thread {
                 	// On the line, move straight
                 	Motor.A.setSpeed(SPEED);
                 	Motor.B.setSpeed(SPEED);
+                	Motor.A.forward();
+                    Motor.B.forward();
             	} 
            		else {
                 	// Off the line, adjust direction
@@ -41,8 +40,7 @@ public class LineFollower extends Thread {
                     	Motor.A.setSpeed(SPEED / 2);
                     	Motor.B.setSpeed(SPEED);
                     	Motor.A.forward();
-                    	Motor.B.forward();
-
+                        Motor.B.forward();
                 	} 
                 	else if (colorSample[0] > BLACK_THRESHOLD){
 
@@ -50,8 +48,7 @@ public class LineFollower extends Thread {
                     	Motor.A.setSpeed(SPEED);
                     	Motor.B.setSpeed(SPEED / 2);
                     	Motor.A.forward();
-                    	Motor.B.forward();
-
+                        Motor.B.forward();
                 	}
             	}
             }

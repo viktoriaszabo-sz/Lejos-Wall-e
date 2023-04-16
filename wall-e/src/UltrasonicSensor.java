@@ -7,7 +7,7 @@ import lejos.robotics.SampleProvider;
 public class UltrasonicSensor extends Thread {
 
 	public static float distance;
-	public static double securityDistance = 0.11;
+	public static float securityDistance = 20;
 	public EV3UltrasonicSensor sonicSensor;
 	DataExchange DE = new DataExchange(); 
 
@@ -18,16 +18,17 @@ public class UltrasonicSensor extends Thread {
 
     public void run() {
 
-    	SampleProvider sp = sonicSensor.getDistanceMode();
-        float[] ultraSample = new float[sp.sampleSize()];
-        		//creating an array, but instead of putting a definite number as a size for that, 
-        		//we put the sampleSize as a measurement for the size
-
-        while (!Button.ESCAPE.isDown()) 
+    	while (!Button.ESCAPE.isDown()) 
         {
+    		SampleProvider sp = sonicSensor.getDistanceMode();
+            float[] ultraSample = new float[sp.sampleSize()];
+            		//creating an array, but instead of putting a definite number as a size for that, 
+            		//we put the sampleSize as a measurement for the size
+
+            
         	sp.fetchSample(ultraSample, 0);
         				//ultrasample is the array itself, 0 is just the position of the first element
-        	distance = ultraSample[0];
+        	float distance = (int)(ultraSample[0]*100);
         	
             //DataExchange.setDistance(distance); //we put the detected distance value into a dataexchange method
 
