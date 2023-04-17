@@ -17,7 +17,8 @@ public class LineFollower extends Thread {
     public void run()
     {
 
-        while(!Button.ESCAPE.isDown()) 
+    		int i = 0; 
+        while(!Button.ESCAPE.isDown() || i < 2) 
         {
             float[] colorSample = DataExchange.colorSample;
             
@@ -60,21 +61,15 @@ public class LineFollower extends Thread {
                 //Sound.twoBeeps();
                 Motor.A.stop();
                 Motor.B.stop();
-                Motor.A.rotate(-TURN_ANGLE);
-                Delay.msDelay(10); 		//actual avoidance happening
-                /*Motor.A.forward();
-                Motor.B.forward();*/
-                Motor.A.setSpeed(SPEED/4);
+                Motor.A.rotate(-TURN_ANGLE); //turns out sharply so that it can avoid the obstacle
+                Delay.msDelay(10); 		//             actual avoidance happening
+                Motor.A.setSpeed(SPEED/4);  //sets the wheels for a turning angle 
                 Motor.B.setSpeed(SPEED);
-                Motor.A.rotate(TURN_ANGLE/2);
-                //Motor.A.forward();
-                //Motor.B.forward();
-                //Delay.msDelay(1000);
-                //Motor.A.rotate(-TURN_ANGLE/4);
-                
+                Motor.A.rotate(TURN_ANGLE/2); //turns back to track
+                i++;
             }
         //Motor.A.close();
         //Motor.B.close();
-        }
+        } 
     }
 }
