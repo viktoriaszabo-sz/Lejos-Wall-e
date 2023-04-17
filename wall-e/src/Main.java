@@ -5,12 +5,12 @@ public class Main{
 
 	  DataExchange DE = new DataExchange();
 		
-	  LineFollower lineFollower = new LineFollower(DE);
-      ColorSensor colorSensor = new ColorSensor(DE); 
+	  ColorSensor colorSensor = new ColorSensor(DE); 
       UltrasonicSensor ultraSonic = new UltrasonicSensor(DE); 
+      LineFollower lineFollower = new LineFollower(DE);
       
-      lineFollower.start();
       colorSensor.start(); 
       ultraSonic.start();
+      lineFollower.start();
     }
 }
