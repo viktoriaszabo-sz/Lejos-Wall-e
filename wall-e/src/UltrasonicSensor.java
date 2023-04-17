@@ -7,7 +7,7 @@ import lejos.robotics.SampleProvider;
 public class UltrasonicSensor extends Thread {
 
 	public static float distance;
-	public static float securityDistance = 12;
+	public static float securityDistance = 8;
 	public EV3UltrasonicSensor sonicSensor;
 	DataExchange DE = new DataExchange(); 
 

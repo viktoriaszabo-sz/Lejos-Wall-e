@@ -1,5 +1,4 @@
 import lejos.hardware.Button;
-import lejos.hardware.Sound;
 import lejos.hardware.motor.Motor;
 import lejos.robotics.Color;
 import lejos.utility.Delay;
@@ -8,7 +7,7 @@ import lejos.utility.Delay;
 public class LineFollower extends Thread {
     public static final int SPEED = 300;
     public static final float BLACK_THRESHOLD = 0.1f;
-    public static int TURN_ANGLE = 180;
+    public static int TURN_ANGLE = 300;
     DataExchange DE; 
 
     public LineFollower(DataExchange DE) { 
@@ -54,18 +53,25 @@ public class LineFollower extends Thread {
             	
             	System.out.println("Obstacle detected!");
             	Motor.A.setSpeed(SPEED);
-            	Motor.B.setSpeed(SPEED);
+            	Motor.B.setSpeed(SPEED); // it adjust the wheels into straightforward position, bc linefollower confused it before
+            	Motor.A.forward(); //we set it to move forward just a bit to make sure it gets straight
+                Motor.B.forward();
+                Delay.msDelay(75);
                 //Sound.twoBeeps();
                 Motor.A.stop();
                 Motor.B.stop();
                 Motor.A.rotate(-TURN_ANGLE);
+                Delay.msDelay(10); 		//actual avoidance happening
                 /*Motor.A.forward();
                 Motor.B.forward();*/
-                //Motor.A.rotate(TURN_ANGLE/2);
-                Motor.A.forward();
-                Motor.B.forward();
+                Motor.A.setSpeed(SPEED/4);
+                Motor.B.setSpeed(SPEED);
+                Motor.A.rotate(TURN_ANGLE/2);
+                //Motor.A.forward();
+                //Motor.B.forward();
                 //Delay.msDelay(1000);
-                Motor.A.rotate(-TURN_ANGLE/4);
+                //Motor.A.rotate(-TURN_ANGLE/4);
+                
             }
         //Motor.A.close();
         //Motor.B.close();
