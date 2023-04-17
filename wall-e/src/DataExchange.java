@@ -27,15 +27,6 @@ public class DataExchange
     	colorSample[0] = sample[0];
     }
 
-     /*public static void setDistance(float d)
-    {
-    	distance = d; //we put the distance into this DE method
-    }
-    public static float getDistance()
-    {
-    	return distance; //We will use this DE method for distance in OB
-    }*/
-    
     
     private int CMD = 1; //which command the robot should do -- 1=linefollowing 2=obstacle-avoidance
     
