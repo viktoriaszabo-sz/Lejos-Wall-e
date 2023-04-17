@@ -34,7 +34,6 @@ public class DataExchange
     
     public static void setCMD(int command) {
 		CMD = command;
-		System.out.println(command);
 	}
 	
 	public static int getCMD() {

@@ -9,8 +9,17 @@ public class Main{
       UltrasonicSensor ultraSonic = new UltrasonicSensor(DE); 
       LineFollower lineFollower = new LineFollower(DE);
       
+      //should be some type of song thread as well
+      
       colorSensor.start(); 
       ultraSonic.start();
       lineFollower.start();
-    }
+      
+      if (LineFollower.interrupted())
+      {
+    	  Celebration celeb = new Celebration();
+    	  
+      }
+      
+	}
 }

@@ -7,7 +7,7 @@ import lejos.utility.Delay;
 public class LineFollower extends Thread {
     public static final int SPEED = 300;
     public static final float BLACK_THRESHOLD = 0.1f;
-    public static int TURN_ANGLE = 300;
+    public static int TURN_ANGLE = 250;
     DataExchange DE; 
 
     public LineFollower(DataExchange DE) { 
@@ -16,11 +16,14 @@ public class LineFollower extends Thread {
 
     public void run()
     {
-
-    		int i = 0; 
-        while(!Button.ESCAPE.isDown() || i < 2) 
+    	System.out.println("Operation WALL-E initiated");
+        
+    	final int MAX_OBSTACLES = 2;
+    	int obstacleCount = 0;
+    	
+        while(!Button.ESCAPE.isDown() || obstacleCount < MAX_OBSTACLES) 
         {
-            float[] colorSample = DataExchange.colorSample;
+        	float[] colorSample = DataExchange.colorSample;
             
             if (DataExchange.getCMD() == 1) //LineFollower code if no obstacle is detected
             {
@@ -53,6 +56,12 @@ public class LineFollower extends Thread {
             else if (DataExchange.getCMD() == 2){ //if obstacle is detected
             	
             	System.out.println("Obstacle detected!");
+            	obstacleCount++;
+            	if (obstacleCount == MAX_OBSTACLES) { // stop after the second encounter
+                    Motor.A.stop();
+                    Motor.B.stop();
+                    interrupt();
+                }
             	Motor.A.setSpeed(SPEED);
             	Motor.B.setSpeed(SPEED); // it adjust the wheels into straightforward position, bc linefollower confused it before
             	Motor.A.forward(); //we set it to move forward just a bit to make sure it gets straight
@@ -62,11 +71,10 @@ public class LineFollower extends Thread {
                 Motor.A.stop();
                 Motor.B.stop();
                 Motor.A.rotate(-TURN_ANGLE); //turns out sharply so that it can avoid the obstacle
-                Delay.msDelay(10); 		//             actual avoidance happening
+                Delay.msDelay(10); 			//       actual avoidance happening
                 Motor.A.setSpeed(SPEED/4);  //sets the wheels for a turning angle 
                 Motor.B.setSpeed(SPEED);
-                Motor.A.rotate(TURN_ANGLE/2); //turns back to track
-                i++;
+                
             }
         //Motor.A.close();
         //Motor.B.close();
