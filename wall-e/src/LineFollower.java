@@ -1,4 +1,5 @@
 import lejos.hardware.Button;
+import lejos.hardware.Sound;
 import lejos.hardware.motor.Motor;
 import lejos.robotics.Color;
 import lejos.utility.Delay;
@@ -21,7 +22,7 @@ public class LineFollower extends Thread {
         {
             float[] colorSample = DataExchange.colorSample;
             
-            if (DE.getCMD() == 1) //LineFollower code if no obstacle is detected
+            if (DataExchange.getCMD() == 1) //LineFollower code if no obstacle is detected
             {
             	if(colorSample [0] == Color.BLACK) {
                 	// On the line, move straight
@@ -49,23 +50,25 @@ public class LineFollower extends Thread {
                 	}
             	}
             }
-            else { //if obstacle is detected
+            else if (DataExchange.getCMD() == 2){ //if obstacle is detected
+            	
             	System.out.println("Obstacle detected!");
+            	Motor.A.setSpeed(SPEED);
+            	Motor.B.setSpeed(SPEED);
                 //Sound.twoBeeps();
                 Motor.A.stop();
                 Motor.B.stop();
-                    Motor.A.rotate(-TURN_ANGLE);
-                    Delay.msDelay(100);
-                    Motor.A.forward();
-                    Motor.B.forward();
-                    Motor.A.rotate(TURN_ANGLE);
-                    Motor.A.forward();
-                    Motor.B.forward();
-                    Delay.msDelay(3000);
-                    Motor.A.rotate(-TURN_ANGLE/2);
+                Motor.A.rotate(-TURN_ANGLE);
+                /*Motor.A.forward();
+                Motor.B.forward();*/
+                //Motor.A.rotate(TURN_ANGLE/2);
+                Motor.A.forward();
+                Motor.B.forward();
+                //Delay.msDelay(1000);
+                Motor.A.rotate(-TURN_ANGLE/4);
             }
+        //Motor.A.close();
+        //Motor.B.close();
         }
-        Motor.A.close();
-        Motor.B.close();
     }
 }
