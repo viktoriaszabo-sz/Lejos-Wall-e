@@ -54,10 +54,11 @@ public class LineFollower extends Thread {
             }
             else {
             	System.out.println("Obstacle detected!");
-                Sound.twoBeeps();
+                //Sound.twoBeeps();
                 Motor.A.stop();
                 Motor.B.stop();
                     Motor.A.rotate(-TURN_ANGLE);
+                    Delay.msDelay(100);
                     Motor.A.forward();
                     Motor.B.forward();
                     Motor.A.rotate(TURN_ANGLE);
