@@ -22,18 +22,10 @@ public class UltrasonicSensor extends Thread {
         {
     		SampleProvider sp = sonicSensor.getDistanceMode();
             float[] ultraSample = new float[sp.sampleSize()];
-            		//creating an array, but instead of putting a definite number as a size for that, 
-            		//we put the sampleSize as a measurement for the size
-
-            
         	sp.fetchSample(ultraSample, 0);
-        				//ultrasample is the array itself, 0 is just the position of the first element
         	float distance = (int)(ultraSample[0]*100);
-        	
-            //DataExchange.setDistance(distance); //we put the detected distance value into a dataexchange method
 
             System.out.println("Distance: " + distance);
-            
             
             if(distance > securityDistance)
             {

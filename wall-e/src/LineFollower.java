@@ -1,5 +1,4 @@
 import lejos.hardware.Button;
-import lejos.hardware.Sound;
 import lejos.hardware.motor.Motor;
 import lejos.robotics.Color;
 import lejos.utility.Delay;
@@ -22,10 +21,8 @@ public class LineFollower extends Thread {
         {
             float[] colorSample = DataExchange.colorSample;
             
-            if (DE.getCMD() == 1) 
+            if (DE.getCMD() == 1) //LineFollower code if no obstacle is detected
             {
-				//LineFollower code if no obstacle is detected
-
             	if(colorSample [0] == Color.BLACK) {
                 	// On the line, move straight
                 	Motor.A.setSpeed(SPEED);
@@ -52,7 +49,7 @@ public class LineFollower extends Thread {
                 	}
             	}
             }
-            else {
+            else { //if obstacle is detected
             	System.out.println("Obstacle detected!");
                 //Sound.twoBeeps();
                 Motor.A.stop();
