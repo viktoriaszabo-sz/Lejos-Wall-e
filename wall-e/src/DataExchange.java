@@ -3,8 +3,8 @@ import lejos.hardware.sensor.EV3UltrasonicSensor;
 
 public class DataExchange 
 {
-    public static final int SPEED = 300;
-    public static final float BLACK_THRESHOLD = 0.1f;
+    //public static final int SPEED = 300;
+    //public static final float BLACK_THRESHOLD = 0.1f;
 
     //colorSensor
     public static EV3ColorSensor colorSensor;
@@ -12,8 +12,8 @@ public class DataExchange
 
     
     //obstacledetector
-    public static int TURN_ANGLE = 180; // angle to turn when avoiding obstacle
-    public static double distance = 0.11;
+    //public static int TURN_ANGLE = 180; // angle to turn when avoiding obstacle
+    //public static double distance = 0.11;
     
     //ultrasonic sensor 
     public EV3UltrasonicSensor sonicSensor;
