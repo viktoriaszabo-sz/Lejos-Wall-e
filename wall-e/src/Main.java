@@ -15,5 +15,11 @@ public class Main{
       ultraSonic.start();
       lineFollower.start();
       
+      
+      /*if (Thread.interrupted()) {
+    	  Destroy destroy = new Destroy ();
+    	  destroy.start();
+      }*/
+      
 	}
 }
