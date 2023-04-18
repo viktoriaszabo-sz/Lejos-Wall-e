@@ -61,6 +61,10 @@ public class LineFollower extends Thread {
                     Motor.A.stop();
                     Motor.B.stop();
                     interrupt();
+                    if (Thread.interrupted()) {
+                        Celebration.disrespect();
+                        return;
+                    }
                 }
             	Motor.A.setSpeed(SPEED);
             	Motor.B.setSpeed(SPEED); // it adjust the wheels into straightforward position, bc linefollower confused it before
