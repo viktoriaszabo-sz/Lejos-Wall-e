@@ -7,7 +7,7 @@ import lejos.utility.Delay;
 public class LineFollower extends Thread {
     public static final int SPEED = 300;
     public static final float BLACK_THRESHOLD = 0.1f;
-    public static int TURN_ANGLE = 250;
+    public static int TURN_ANGLE = 220;
     DataExchange DE; 
 
     public LineFollower(DataExchange DE) { 
@@ -38,7 +38,7 @@ public class LineFollower extends Thread {
                 	// Off the line, adjust direction
                 	if(colorSample[0] < BLACK_THRESHOLD) {
                     	// Too far to the right, turn left
-                    	Motor.A.setSpeed(SPEED / 2);
+                    	Motor.A.setSpeed(SPEED / 4);
                     	Motor.B.setSpeed(SPEED);
                     	Motor.A.forward();
                         Motor.B.forward();
@@ -70,11 +70,12 @@ public class LineFollower extends Thread {
                 //Sound.twoBeeps();
                 Motor.A.stop();
                 Motor.B.stop();
+                //actual avoidance happening
                 Motor.A.rotate(-TURN_ANGLE); //turns out sharply so that it can avoid the obstacle
                 Delay.msDelay(10); 			//       actual avoidance happening
                 Motor.A.setSpeed(SPEED/4);  //sets the wheels for a turning angle 
                 Motor.B.setSpeed(SPEED);
-                
+                //Motor.A.rotate(-TURN_ANGLE/4);
             }
         //Motor.A.close();
         //Motor.B.close();
