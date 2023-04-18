@@ -1,4 +1,7 @@
+import java.io.File;
+
 import lejos.hardware.Button;
+import lejos.hardware.Sound;
 import lejos.hardware.motor.Motor;
 import lejos.robotics.Color;
 import lejos.utility.Delay;
@@ -9,6 +12,7 @@ public class LineFollower extends Thread {
     public static final float BLACK_THRESHOLD = 0.1f;
     public static int TURN_ANGLE = 220;
     DataExchange DE; 
+    
 
     public LineFollower(DataExchange DE) { 
     	this.DE = DE; 
@@ -61,6 +65,31 @@ public class LineFollower extends Thread {
                     Motor.A.stop();
                     Motor.B.stop();
                     interrupt();
+                    if (LineFollower.interrupted()) {
+                        
+                    	/*Celebration celeb = new Celebration();
+                    	Destroy destroy = new Destroy ();
+                    	
+                    	celeb.start();
+                        destroy.start();
+                        return;*/
+                    	 
+                    	System.out.println("DISRESPECT YOUR		SURROUNDINGS!");
+                    	
+                    	Motor.A.setSpeed(90); 
+                    	Motor.B.setSpeed(90);
+                    	
+                    	Motor.A.forward();
+                    	Motor.B.backward();
+                    	
+                		Sound.playSample(new File ("dis.wav"), Sound.VOL_MAX);
+                		Delay.msDelay(1000);
+                		
+                		Motor.A.stop();
+    					Motor.B.stop();
+    					interrupt();
+    					//return;
+                    }
                 }
             	Motor.A.setSpeed(SPEED);
             	Motor.B.setSpeed(SPEED); // it adjust the wheels into straightforward position, bc linefollower confused it before

@@ -15,11 +15,11 @@ public class Main{
       ultraSonic.start();
       lineFollower.start();
       
-      if (LineFollower.interrupted())
-      {
-    	  Celebration celeb = new Celebration();
-    	  
-      }
+      
+      /*if (Thread.interrupted()) {
+    	  Destroy destroy = new Destroy ();
+    	  destroy.start();
+      }*/
       
 	}
 }
