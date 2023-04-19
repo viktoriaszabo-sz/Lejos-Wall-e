@@ -7,7 +7,7 @@ import lejos.robotics.SampleProvider;
 public class UltrasonicSensor extends Thread {
 
 	public static float distance;
-	public static float securityDistance = 20;
+	public static float securityDistance = 9;
 	public EV3UltrasonicSensor sonicSensor;
 	DataExchange DE = new DataExchange(); 
 
@@ -25,18 +25,17 @@ public class UltrasonicSensor extends Thread {
         	sp.fetchSample(ultraSample, 0);
         	float distance = (int)(ultraSample[0]*100);
 
-            System.out.println("Distance: " + distance);
+            //System.out.println("Distance: " + distance);
             
             if(distance > securityDistance)
             {
 				//sends message to dataExchange to do command 1 (a.k.a. no obstacle detected)
-				DE.setCMD(1);
+				DataExchange.setCMD(1);
 			}
             else 
 			{ //if <= security distance
 				
-				DE.setCMD(0); //do obstacle avoidance 
-				
+				DataExchange.setCMD(2); //do obstacle avoidance 
 			}
         }
         sonicSensor.close();
