@@ -1,7 +1,6 @@
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 
-//testing CodeOwner feature by yours truly KatieRJ :)
 
 public class DataExchange 
 {
