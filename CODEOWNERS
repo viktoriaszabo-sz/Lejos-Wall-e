@@ -1,12 +1,12 @@
 # This is a comment
 # Assign LineFollower.java to Keita
-LineFollower.java   @KatieRJ
+src/LineFollower.java   @KatieRJ
 
 # Assign DataExchange.java to Viktoria
-DataExchange.java   @viktoriaszabo-sz
+src/DataExchange.java   @viktoriaszabo-sz
 
 #Assign UltrasonicSensor.java to Roy
-UltrasonicSensor.java   @Welkro
+src/UltrasonicSensor.java   @Welkro
 
 #Assign ColorSensor.java to Sara
-ColorSensor.java   @cerberus2078
+src/ColorSensor.java   @cerberus2078
