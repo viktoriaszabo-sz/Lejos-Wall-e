@@ -4,6 +4,8 @@ import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.robotics.SampleProvider;
 
+// Testing code owner stuff
+
 public class UltrasonicSensor extends Thread {
 
 	public static float distance;
