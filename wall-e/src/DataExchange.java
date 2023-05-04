@@ -7,7 +7,6 @@ public class DataExchange
 {
     //public static final int SPEED = 300;
     //public static final float BLACK_THRESHOLD = 0.1f;
-public class DataExchange extends Thread {
 	
 public DataExchange() {} //constructor
     
